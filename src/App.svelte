@@ -287,12 +287,12 @@
     overflow: hidden;
     background-color: currentColor; /* tu color de barra */
 
-    -webkit-mask-image: url('./bici.svg');
+    -webkit-mask-image: url('/images/bici.svg');
     -webkit-mask-size: auto 100%;
     -webkit-mask-repeat: space;
     -webkit-mask-position: center;
 
-    mask-image: url('./bici.svg');
+    mask-image: url('/images/bici.svg');
     mask-size: auto 100%;
     mask-repeat: space;
     mask-position: center;
