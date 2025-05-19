@@ -3,23 +3,27 @@
   import { onMount } from "svelte";
 
   let bikeData = [
-    { city: "Buenos Aires",  year: 2015, count: 4200 },
-    { city: "Buenos Aires",  year: 2016, count: 6500 },
-    { city: "Buenos Aires",  year: 2017, count: 7000 },
-    { city: "Buenos Aires",  year: 2018, count: 7500 },
-    { city: "Buenos Aires",  year: 2019, count: 8000 },
-    { city: "Buenos Aires",  year: 2020, count: 8500 },
-    { city: "Buenos Aires",  year: 2021, count: 9000 },
-    { city: "Buenos Aires",  year: 2022, count: 9500 },
+    { city: "Buenos Aires",  year: 2015, count: 2400 },
+    { city: "Buenos Aires",  year: 2016, count: 3300 },
+    { city: "Buenos Aires",  year: 2017, count: 4200 },
+    { city: "Buenos Aires",  year: 2018, count: 5400 },
+    { city: "Buenos Aires",  year: 2019, count: 6300 },
+    { city: "Buenos Aires",  year: 2020, count: 7100 },
+    { city: "Buenos Aires",  year: 2021, count: 7700 },
+    { city: "Buenos Aires",  year: 2022, count: 8700 },
+    { city: "Buenos Aires",  year: 2023, count: 9200 },
+    { city: "Buenos Aires",  year: 2024, count: 9800 },
 
-    { city: "Córdoba", year: 2015, count: 2000 },
-    { city: "Córdoba", year: 2016, count: 2500 },
-    { city: "Córdoba", year: 2017, count: 3000 },
-    { city: "Córdoba", year: 2018, count: 3500 },
-    { city: "Córdoba", year: 2019, count: 4500 },
-    { city: "Córdoba", year: 2020, count: 5000 },
-    { city: "Córdoba", year: 2021, count: 6000 },
-    { city: "Córdoba", year: 2022, count: 7000 },
+    { city: "Córdoba", year: 2015, count: 2300 },
+    { city: "Córdoba", year: 2016, count: 3500 },
+    { city: "Córdoba", year: 2017, count: 4500 },
+    { city: "Córdoba", year: 2018, count: 5600 },
+    { city: "Córdoba", year: 2019, count: 5000 },
+    { city: "Córdoba", year: 2020, count: 4300 },
+    { city: "Córdoba", year: 2021, count: 3800 },
+    { city: "Córdoba", year: 2022, count: 3200 },
+    { city: "Córdoba", year: 2023, count: 2800 },
+    { city: "Córdoba", year: 2024, count: 2500 },
 
     { city: "Rosario", year: 2015, count: 3500 },
     { city: "Rosario", year: 2016, count: 3600 },
@@ -27,8 +31,10 @@
     { city: "Rosario", year: 2018, count: 3800 },
     { city: "Rosario", year: 2019, count: 4200 },
     { city: "Rosario", year: 2020, count: 4300 },
-    { city: "Rosario", year: 2021, count: 4400 },
-    { city: "Rosario", year: 2022, count: 4500 }
+    { city: "Rosario", year: 2022, count: 4400 },
+    { city: "Rosario", year: 2022, count: 4500 },
+    { city: "Rosario", year: 2023, count: 4600 },
+    { city: "Rosario", year: 2024, count: 4700 }
   ];
 
   const populations = {
@@ -77,34 +83,38 @@
 
 <main class="container">
   <div class="intro">
-    <h1 class="main-title">💥 El boom del uso de bicicletas en Argentina 💥</h1>
-    <h2 class="subheading">En los últimos años, el uso de bicicletas en ciudades argentinas ha crecido exponencialmente 📈</h2>
+    <h1 class="main-title">💥<strong> EL BOOM DEL USO DE BICICLETAS EN ARGENTINA</strong>  💥</h1>
+    <h2 class="subheading">En los últimos años, el uso de bicicletas en ciudades argentinas ha crecido exponencialmente</h2>
     <p class="story-text">
-      Desde 2015 hasta 2022, el número de bicicletas en circulación ha mostrado tendencias interesantes:
-      BS AS crece de forma constante, Córdoba acelera a partir de 2018 y Rosario mantiene estabilidad progresiva.
-      Además, analizamos cómo evolucionó el uso de bicicletas en proporción a la población de cada ciudad.
+      La bicicleta es mucho más que un medio de transporte: es salud, es sostenibilidad y es conexión con la ciudad. En Argentina, en los últimos años su uso ha cobrado un nuevo protagonismo. Ya sea para ir al trabajo, estudiar o simplemente disfrutar del aire libre, cada vez más personas eligen pedalear. Este proyecto explora cómo ha evolucionado esta tendencia en distintas ciudades del país y qué nos cuentan los números sobre su adopción y crecimiento.
     </p>
-  </div>
-
-  <div class="legend">
-    🌱 Nivel de adopción (bicis por cada 1000 habitantes)
   </div>
 
   <section class="city-container">
     {#each Object.keys(groupedData) as city, i}
       <div class="city-section">
-        <h3 class="city-title">{city}</h3>
+        <h3 class="city-title city-title-limited">
+          {#if city === "Buenos Aires"}
+          <strong>Buenos Aires</strong><br>
+            <span class="city-subtext">Tendencia sostenida y creciente cada año</span>
+          {:else if city === "Córdoba"}
+            <strong>Córdoba</strong><br>
+            <span class="city-subtext">Crecimiento acelerado desde 2018</span>
+          {:else if city === "Rosario"}
+            <strong>Rosario</strong><br>
+            <span class="city-subtext">Estabilidad con leve incremento continuo</span>
+          {/if}
+        </h3>
       </div>
       <div class={i < 3 ? "city-card equal-height fade-in" : "city-card fade-in"}>
+    
         <div class="bike-list">
           {#each groupedData[city] as d}
-            <div class="bike-row">
+            <div class="bike-entry">
               <span class="bike-year">{d.year}</span>
-              <div class="progress-bar" style="width: {pct(d)}; background-color: {color(d.count)}; -webkit-mask: url('./images/bici.svg') repeat-x center/auto 100%; mask: url('./images/bici.svg') repeat-x center/auto 100%;"></div>
+              <div class="progress-bar"
+                  style="width: {pct(d)}; background-color: {color(d.count)};"></div>
               <span class="bike-count">{d.count}</span>
-            </div>
-            <div class="bike-row plant-row">
-              <span class="bike-year"></span>
               <span class="plant-icons">
                 {#each Array(plantScale(d.perThousand)) as _, idx}
                   <span class="plant-icon">🌱</span>
@@ -114,39 +124,53 @@
             </div>
           {/each}
         </div>
+        <div class="card-legend-inline">
+          <div class="legend-entry">
+            <div class="progress-bar legend-bar"></div>
+            <span class="legend-text">Barra proporcional al total anual de bicicletas</span>
+          </div>
+          <div class="legend-entry">
+            <span class="plant-icon">🌱</span>
+            <span class="legend-text">     Nivel de adopción (bicis cada 1000 hab.)</span>
+          </div>
+        </div>        
       </div>
     {/each}
-  </section>
+</section>
 
-  <h2 class="deep-dive-title">Analizando en profundidad…</h2>
+<h2 class="deep-dive-title"><strong>Comparación de tendencias entre ciudades</strong></h2>
 
-  <section class="city-card flourish-paired fade-in">
+<section class="city-card flourish-paired fade-in">
+    <div class="flourish-double">
+      <!-- Primer gráfico + texto -->
+      <!-- Primer gráfico + texto -->
+  <div class="flourish-single">
     <div class="flourish-chart-container">
       <div class="flourish-embed flourish-chart" data-src="visualisation/22921002"></div>
     </div>
     <div class="flourish-chart-text">
-      <h2>Contribución acumulada por ciudad (2015–2022)</h2>
+      <h2 class="chart-title"> Evolución desigual entre ciudades argentinas</h2>
       <p>
-        Este gráfico de áreas muestra cómo se distribuye la cantidad total de bicicletas entre las tres ciudades a lo largo del tiempo. 
-        Permite visualizar el crecimiento conjunto y, al mismo tiempo, identificar el peso relativo de cada ciudad dentro del total acumulado.
-      </p>
+        Buenos Aires muestra un crecimiento constante en la cantidad de bicicletas desde 2015, consolidando año a año su liderazgo. Córdoba, en cambio, exhibe una trayectoria opuesta: luego de un inicio prometedor, cae de forma sostenida a partir de 2018. Rosario mantiene un comportamiento más equilibrado, sin grandes saltos pero también sin retrocesos marcados.
+     </p>
     </div>
-  </section>
+  </div>
 
-  <section class="city-card flourish-paired fade-in">
+  <!-- Segundo gráfico + texto -->
+  <div class="flourish-single">
     <div class="flourish-chart-container">
       <div class="flourish-embed flourish-chart" data-src="visualisation/22654728"></div>
     </div>
     <div class="flourish-chart-text">
-      <h2>Aumento porcentual del uso de bicicletas (2015–2022)</h2>
+      <h2 class="chart-title">Córdoba pierde el liderazgo, Buenos Aires toma la delantera</h2>
       <p>
-        Este gráfico muestra el crecimiento porcentual acumulado en cada ciudad desde 2015. 
-        Permite comparar la intensidad del aumento relativo, independientemente de la cantidad total de bicicletas, 
-        resaltando qué ciudades adoptaron más rápidamente su uso.
+        El crecimiento porcentual acumulado evidencia un cambio de posiciones entre las ciudades. Buenos Aires multiplica por cuatro su parque de bicicletas en menos de una década, mientras que Rosario crece de forma más suave pero constante. Córdoba, que había arrancado con fuerza, pierde empuje y queda muy por debajo del ritmo de sus pares.
       </p>
     </div>
-  </section>
-  <script src="https://public.flourish.studio/resources/embed.js"></script>
+  </div>
+
+</section>
+
   
   <footer class="city-card footer fade-in">
     <p><strong>Parcial – Visualización de Datos</strong></p>
@@ -172,8 +196,10 @@
 
 <style>
 
+  /* INICIO */
+
   .intro {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto 2rem;
     text-align: center;
     
@@ -181,18 +207,40 @@
 
   .main-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #111;
   }
 
-  .subheading { font-size: 1.4rem; margin: 0.5rem 0; font-weight: 500; }
-  .story-text { font-size: 1rem; line-height: 1.6; }
+  .subheading { 
+    font-size: 1.4rem; 
+    margin: 0.5rem auto;
+    font-weight: 500; 
+    max-width: 1100px;
+  }
+
+  .story-text {
+    max-width: 840px;    /* ajusta este valor a tu gusto */
+    width: 90%;          /* opcional: que sea un % del contenedor */
+    margin: 1rem auto;   /* centra horizontalmente y separa verticalmente */
+  }
+
+  /* CIUDADES */
 
   .city-container { display: grid; gap: 2rem; }
   .city-section { margin-bottom: 1rem; }
-  .city-title { font-size: 2.4rem; font-weight: 600; text-align: center; user-select: none;}
+  .city-title { font-size: 2rem; font-weight: 600; text-align: center; user-select: none;}
+  .city-title-limited {max-width: 1000px; margin: 0 auto; line-height: 1.3;}
+  .city-title-limited strong {
+    font-weight: 800;
+    color: #233;
+  }
 
+  .city-subtext {
+    font-weight: 700;
+    color: #666; /* un gris más suave */
+    font-size: 1.5rem;
+  }
   .city-card {
     background: #fff;
     padding: 2rem;
@@ -210,68 +258,148 @@
     justify-content: space-between;
   }
 
-  .legend {
-    text-align: center;
-    margin: 1rem 0;
-    font-weight: 600;
-    color: #388E3C;
-  }
+  /* AÑOS Y DATA */
 
   .bike-list { display: flex; flex-direction: column; gap: 1.6rem; }
 
-  .bike-row {
+  .bike-entry {
     display: grid;
     grid-template-columns: 60px 1fr auto;
-    gap: 1rem;
-    align-items: center
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.6rem 1rem;  
+    margin-bottom: 1.6rem; 
   }
 
-  .bike-row .bike-year {
-    align-self: flex-start;
-    margin-top: 0.6rem;
-    font-size: 1.4rem;
+  .bike-year {
+    grid-row: 1 / span 2;
+    align-self: center;
+    font-size: 0.85rem;  
     font-weight: 600;
-    color: #333;
-    text-align: right;
+    text-align: center;
   }
+
+  /* Primera fila: bicicletas */
 
   .progress-bar {
     height: 32px;
     border-radius: 16px;
     overflow: hidden;
+    background-color: currentColor; /* tu color de barra */
+
+    -webkit-mask-image: url('./images/bici.svg');
+    -webkit-mask-size: auto 100%;
+    -webkit-mask-repeat: space;
+    -webkit-mask-position: center;
+
+    mask-image: url('./images/bici.svg');
+    mask-size: auto 100%;
+    mask-repeat: space;
+    mask-position: center;
   }
 
   .bike-count {
-    font-size: 1rem;
+    grid-row: 1;
+    grid-column: 3;
+    font-size: 1.6rem;
     font-weight: 600;
-    white-space: nowrap;
   }
 
-  .plant-row {
-    display: grid;
-    grid-template-columns: 60px 1fr auto;
-    align-items: center;
-    gap: 1rem;
+  /* Segunda fila: plantitas */
+  .plant-icons {
+    grid-row: 2;
+    grid-column: 2;
+    display: flex;
+    gap: 0.2rem;
   }
-
-  .plant-icons { display: flex; gap: 0.2rem; }
-  .plant-icon { font-size: 1.2rem; user-select: none;}
   .per-thousand-count {
+    grid-row: 2;
+    grid-column: 3;
     font-size: 0.95rem;
     font-weight: 500;
     color: #388E3C;
   }
 
+    /* LEYENDA */
+    .card-legend-inline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin: 2rem auto 0 auto;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+      max-width: 900px;
+      flex-wrap: nowrap;
+    }
+
+    .legend-entry {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .legend-bar {
+      width: 32px; /* más chico que antes para que entre 1 bici */
+      height: 32px;
+      background-color: #444; /* color fijo y oscuro */
+      -webkit-mask-image: url('./images/bici.svg');
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+
+      mask-image: url('./images/bici.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      border-radius: 12px;
+    }
+
+
+    .legend-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+  /* GRAFICOS */
+  
   .deep-dive-title {
     font-size: 1.8rem;
     font-weight: 600;
     color: #444; 
     text-align: center;
     margin: 0;
-    padding-bottom: 0.6rem;
+    padding-bottom: 4rem;
     margin-top: 3rem;
     user-select: none;
   }
+
+  .flourish-double {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem; /* espacio entre los dos bloques */
+  }
+
+  .flourish-single {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+
+  .chart-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2c3e50; /* azul oscuro, sobrio */
+    margin-bottom: 1rem;
+    border-left: 6px solid #000000;
+    padding-left: 1rem;
+  }
+
 
   .flourish-paired {
     display: flex;
@@ -286,8 +414,10 @@
     width: 92%;
     max-width: 1000px;
     margin: 0 auto 3rem;
-  }
 
+    padding: rem
+  }
+  
   .flourish-chart-container {
     flex: 1 1 60%;
     display: flex;
@@ -314,6 +444,8 @@
     font-size: 1.05rem;
     line-height: 1.6;
   }
+
+  /* FOOTER */
 
   .footer {
     background: #ffffff;
@@ -356,6 +488,8 @@
     transform: scale(1.1);
   }
 
+  /* ANIMACIONES */
+  
   .city-card,
   .flourish-paired {
     scroll-margin-top: 6rem;
