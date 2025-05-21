@@ -141,31 +141,30 @@
 <h2 class="deep-dive-title"><strong>Comparación de tendencias entre ciudades</strong></h2>
 
 <section class="city-card flourish-paired fade-in">
-    <div class="flourish-double">
-      <!-- Primer gráfico + texto -->
-      <!-- Primer gráfico + texto -->
-  <div class="flourish-single">
-    <div class="flourish-chart-container">
-      <div class="flourish-embed flourish-chart" data-src="visualisation/22921002"></div>
-    </div>
-    <div class="flourish-chart-text">
-      <h2 class="chart-title"> Evolución desigual entre ciudades argentinas</h2>
-      <p>
-        Buenos Aires muestra un crecimiento constante en la cantidad de bicicletas desde 2015, consolidando año a año su liderazgo. Córdoba, en cambio, exhibe una trayectoria opuesta: luego de un inicio prometedor, cae de forma sostenida a partir de 2018. Rosario mantiene un comportamiento más equilibrado, sin grandes saltos pero también sin retrocesos marcados.
-     </p>
-    </div>
-  </div>
-
-  <!-- Segundo gráfico + texto -->
-  <div class="flourish-single">
-    <div class="flourish-chart-container">
-      <div class="flourish-embed flourish-chart" data-src="visualisation/22654728"></div>
-    </div>
-    <div class="flourish-chart-text">
-      <h2 class="chart-title">Córdoba pierde el liderazgo, Buenos Aires toma la delantera</h2>
-      <p>
-        El crecimiento porcentual acumulado evidencia un cambio de posiciones entre las ciudades. Buenos Aires multiplica por cuatro su parque de bicicletas en menos de una década, mientras que Rosario crece de forma más suave pero constante. Córdoba, que había arrancado con fuerza, pierde empuje y queda muy por debajo del ritmo de sus pares.
+  <div class="flourish-double">
+    <div class="flourish-single">
+      <div class="flourish-chart-container">
+        <div class="flourish-embed flourish-chart" data-src="visualisation/22921002"></div>
+      </div>
+      <div class="flourish-chart-text">
+        <h2 class="chart-title"> Evolución desigual entre ciudades argentinas</h2>
+        <p>
+          Buenos Aires muestra un crecimiento constante en la cantidad de bicicletas desde 2015, consolidando año a año su liderazgo. Córdoba, en cambio, exhibe una trayectoria opuesta: luego de un inicio prometedor, cae de forma sostenida a partir de 2018. Rosario mantiene un comportamiento más equilibrado, sin grandes saltos pero también sin retrocesos marcados.
       </p>
+      </div>
+    </div>
+
+    <!-- Segundo gráfico + texto -->
+    <div class="flourish-single">
+      <div class="flourish-chart-container">
+        <div class="flourish-embed flourish-chart" data-src="visualisation/22654728"></div>
+      </div>
+      <div class="flourish-chart-text">
+        <h2 class="chart-title">Córdoba pierde el liderazgo, Buenos Aires toma la delantera</h2>
+        <p>
+          El crecimiento porcentual acumulado evidencia un cambio de posiciones entre las ciudades. Buenos Aires multiplica por cuatro su parque de bicicletas en menos de una década, mientras que Rosario crece de forma más suave pero constante. Córdoba, que había arrancado con fuerza, pierde empuje y queda muy por debajo del ritmo de sus pares.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -220,9 +219,9 @@
   }
 
   .story-text {
-    max-width: 840px;    /* ajusta este valor a tu gusto */
-    width: 90%;          /* opcional: que sea un % del contenedor */
-    margin: 1rem auto;   /* centra horizontalmente y separa verticalmente */
+    max-width: 840px;    
+    width: 90%;          
+    margin: 1rem auto;   
   }
 
   /* CIUDADES */
@@ -238,7 +237,7 @@
 
   .city-subtext {
     font-weight: 700;
-    color: #666; /* un gris más suave */
+    color: #666;
     font-size: 1.5rem;
   }
   .city-card {
@@ -279,13 +278,13 @@
     text-align: center;
   }
 
-  /* Primera fila: bicicletas */
+  /* PRIMERA FILA: BICICLETAS */
 
   .progress-bar {
     height: 32px;
     border-radius: 16px;
     overflow: hidden;
-    background-color: currentColor; /* tu color de barra */
+    background-color: currentColor; 
 
     -webkit-mask-image: url('/images/bici.svg');
     -webkit-mask-size: auto 100%;
@@ -305,7 +304,7 @@
     font-weight: 600;
   }
 
-  /* Segunda fila: plantitas */
+  /* SEGUNDA FILA: PLANTITAS */
   .plant-icons {
     grid-row: 2;
     grid-column: 2;
@@ -342,15 +341,15 @@
     }
 
     .legend-bar {
-      width: 32px; /* más chico que antes para que entre 1 bici */
+      width: 32px; 
       height: 32px;
-      background-color: #444; /* color fijo y oscuro */
-      -webkit-mask-image: url('./images/bici.svg');
+      background-color: #444; 
+      -webkit-mask-image: url('/images/bici.svg');
       -webkit-mask-size: contain;
       -webkit-mask-repeat: no-repeat;
       -webkit-mask-position: center;
 
-      mask-image: url('./images/bici.svg');
+      mask-image: url('/images/bici.svg');
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
@@ -380,7 +379,7 @@
   .flourish-double {
     display: flex;
     flex-direction: column;
-    gap: 5rem; /* espacio entre los dos bloques */
+    gap: 5rem; 
   }
 
   .flourish-single {
@@ -394,7 +393,7 @@
   .chart-title {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #2c3e50; /* azul oscuro, sobrio */
+    color: #2c3e50;
     margin-bottom: 1rem;
     border-left: 6px solid #000000;
     padding-left: 1rem;
